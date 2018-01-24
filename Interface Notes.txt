@@ -1,0 +1,136 @@
+* Inteface is extension of abstract class
+
+* We declare interface by using interface keyword. Interface is allowed to declare only abstract method. 
+
+* At real time business projects initially we should declare functionalities through interface. After declaring functionalities we write implementations of the business project.
+
+* Interface is also known as 100% pure abstract class. At business organization Service Requirement Specification documents declares functionalties of the project later we develop the implementations for each functionality.
+
+* Interface highlites set of functionalities of the project later we develop the implementations based on set of functionalities.
+
+* Interface classes are by default abstract classes, interface base methods are by default public & abstract. Thus object declaration/creation in interface is not allowed.
+
+
+* Compiler creates dot class file after compiling the class in java. Similarly compiler creates dot  interface file after compiling the interface in java.
+
+* While declaring implementations of the interfaces. The implementations must be declared with public modifier
+
+* The interface reference variable is able to hold implementation class object 
+
+* For interface it is possible to apply inheritance concept. 
+Interface vs Inheritance
+--------------------------------------------------------
+interface It1{
+	void m1();
+}
+interface It2 extends It1{
+	void m2(); //it holds fuctionalities of 2 methods
+}
+interface It3 extends It2{
+	void m3(); //it holds functionalities of 3 methods
+}
+class Test implements It1{
+	//we can override/implement 1 method available at It1 interface
+}
+class Test implements It2{
+	//we can override/implement 2 methods available at It2 interface
+}
+class Test implements It3{
+	//we can override/implement 3 methods available at It3 interface
+}
+
+* One interface is able to extend multiple interfaces, thus multiple inheritance is possible with interface
+-----------------------------------------------------------------
+interface It1{
+	void m1();
+}
+interface It2{
+	void m2();
+}
+interface It3 extends It1, It2{
+	void m3();
+}
+
+class TestOne implements It3{
+	//this class can override/implement three methods
+}
+
+* One class is able to implement multiple interfaces, thus multiple interface is possible with class
+-------------------------------------------------------------------
+interface It5{
+	void m1();
+}
+interface It6{
+	void m2();
+}
+
+class TestFive implements It5, It6{
+	//this class can override/implement two methods
+}
+
+* We can not extend an interface to a class
+* We can not extend an interface to the same interface
+
+extends and implements possibilities
+--------------------------------------------------------------------------------
+class extends class
+interface extends interface
+class implements interface
+
+class A extends B //valid
+class A extends B, C //invalid
+class A implements ItOne //valid
+class A implements ItOne, ItTwo //valid
+class A extends A //invalid
+
+interface ItOne extends ItTwo //valid
+interface ItOneOne extends ItTwo, ItThree //valid
+interface ItOne extends A //invalid
+interface ItOne extends ItOne //invalid
+
+class A extends B implements ItOne, ItTwo //valid
+class A implements ItOne, ItTwo extends B //invalid
+/*extends keyword must be first if we need to use extends & implements keywords*/
+
+
+
+
+* Interface is like SRS (Service Requirement Specifications) document it contains only functionalities. Declare the implementations in implementation(child) class. While declaring the implementations of those specific implementations must be declared with public modifier because interface is public and abstract by default.
+
+* Nested interface: It is possible to declare an interface in another interface is called nested interface. In collections we use nested interface. (Map.Entry interface represents Map as main interface and Entry as nested interface)
+
+* We can also declare an interface inside the class. Method functionalities declared in any interface are public by default, thus always declare  the implementations as public of the interfaces in implementation(child) class.
+
+* We can also declare variables in an interface, by default these variables are public static final. So we can not reassign values to these variables, to access these variables in implementation class please consider interface reference(name/address).
+
+-------------------------------------------------------------------------------
+Interface Limitation/problem
+* If we have declared '8' functionalities in an interface, we should override/implement all '8' functionalities to use(implement)8 even one among '8' functionalities.
+* This limitation/problem will not allow user to skip any functionality implementation.
+	Solution: To overcome the limitation/problem use adopter class concept.
+	* Through adopter class we should declare empty implementations of all '8' functionalities by using 'implements' keyword towards interface.
+	* Now we should extend the empty implementations(adopter class) to override required functionalities.
+	Adopter Class: The Adopter Class contain empty implementations of interface methods.
+	* We do not use any adopter keyword to declare adopter class.
+ 
+---------------------------------------------------------------------------------
+Marker Interface: The interface which does not contains methods but whenver we are implementing that specific interface to class, the class must acquire some capabilities to perform some operations. Without methods the class is acquiring propereties those capabilities are provided by JVM
+The interface without methods is called as Marker Interface. Example is java.lang.Cloneable is marker interface. Without methods the class is acquiring propereties those capabilities are provided by JVM
+
+	Object Cloning: The process of creating exact duplicate object. The main object of the cloning is to miantain the backup. The process of 	creating exactly duplicate object is called cloning processs. We need duplicate object or cloning process to maintain backup of the data. The clone method belongs to object class. 
+---------------------------------------------------------------------------------------
+
+Summary of interface:
+* Interface is extension of Abstract class
+* Interface containts only abstract method
+* Interface methods are by default public and Abstract
+* For Interface object creation is not allowed
+* The interface is pure Abstract class or The interface is Service Requirement Specifications document or The interface is to declare all functionalities of the project and we should declare implementations at child/implementation class
+* One interface is able to extend multiple interfaces at a time, but one class is able to extend only one class at a time. One class is able to implement multiple interfaces
+* Whenever we implement an interface we must override all methods declared in interface even if we need few methods among all. To overome this limitation we should follow adopter class concept. Interface contains declarations, Adopter class contains all empty implementations of interface extend Adopter class to another class to override required methods
+* Marker interface does not contain any methods, whenever we are implementing that interface to a class that specific class must acquire some capabilities to perform some operations. Without methods the class is acquiring propereties those capabilities are provided by JVM
+* Object cloning is the process of creating exactly duplicate object
+
+ 
+
+
